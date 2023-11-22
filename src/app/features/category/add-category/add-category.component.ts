@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { CategoryService } from './../services/category.service';
 import { Component } from '@angular/core';
 import { AddCategoryRequest } from '../models/add-category-request-model';
 
@@ -9,13 +11,21 @@ import { AddCategoryRequest } from '../models/add-category-request-model';
 export class AddCategoryComponent {
 
   model: AddCategoryRequest;
-  constructor () {
+  constructor (private CategoryService:CategoryService) {
     this.model = {
       Name: '',
       UrlHandle: ''
     };
   }
 onFormSubmit(){
-  console.log(this.model);
+  this.CategoryService.addCategory(this.model)
+  .subscribe({
+    next: (response) => {
+      console.log('This was successful!');
+    }, 
+    error: (error) => {
+      console.error('Bad request!');
+    }
+  });
 }
 }
