@@ -19,11 +19,6 @@ export class AddCategoryComponent implements OnDestroy {
       UrlHandle: ''
     };
   }
-
-
-  
-
-
 onFormSubmit(){
   this.addCategorySubscription = this.CategoryService.addCategory(this.model)
   .subscribe({
