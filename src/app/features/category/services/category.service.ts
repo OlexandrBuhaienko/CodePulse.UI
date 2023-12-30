@@ -13,7 +13,11 @@ export class CategoryService {
   addCategory(model:AddCategoryRequest): Observable<void>{
     return this.http.post<void>(`${environment.apiBaseUrl}/api/categories`, model);
   }
-  getAllCategories() : Observable<Category[]>{
-    return this.http.get<Category[]>(`${environment.apiBaseUrl}/api/Categories`)
+  getAllCategories(): Observable<Category[]>{
+    return this.http.get<Category[]>(`${environment.apiBaseUrl}/api/categories`)
+  }
+  getCategoryById (id: string ): Observable<Category>
+  {
+    return this.http.get<Category>(`${environment.apiBaseUrl}/api/categories/${id}`)
   }
 }
