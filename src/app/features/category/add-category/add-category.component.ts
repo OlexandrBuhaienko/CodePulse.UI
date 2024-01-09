@@ -1,7 +1,7 @@
 import { Observable, Subscription } from 'rxjs';
 import { CategoryService } from './../services/category.service';
 import { Component, OnDestroy } from '@angular/core';
-import { AddCategoryRequest } from '../models/add-category-request-model';
+import { AddCategoryRequest } from '../models/add-category-request.model';
 import { Router } from '@angular/router';
 
 @Component({
