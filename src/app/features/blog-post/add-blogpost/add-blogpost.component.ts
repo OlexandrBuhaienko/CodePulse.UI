@@ -15,10 +15,10 @@ export class AddBlogpostComponent {
       shortDescription: '',
       urlHandle: '',
       content: '',
-      featureImageUrl: '',
+      featuredImageUrl: '',
       author: '',
       isVisible: true,
-      pablishedDate: new Date()
+      publishedDate: new Date()
     }
   }
   onFormSubmit() : void{

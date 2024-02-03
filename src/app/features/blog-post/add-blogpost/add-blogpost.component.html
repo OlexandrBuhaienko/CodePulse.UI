@@ -44,7 +44,7 @@
                 id="featuredImageUrl" 
                 name="featuredImageUrl" 
                 class="form-control"
-                [(ngModel)] ="model.featureImageUrl">
+                [(ngModel)] ="model.featuredImageUrl">
             </div>
             <div class="mt-3">
                 <label for="publishedDate" class="form-label">Published Date</label>
@@ -53,8 +53,8 @@
                 name="publishedDate" 
                 class="form-control"
                 value="{(model.urlHandle)}"
-                [ngModel]= "model.pablishedDate | date: 'yyyy-MM-dd'"
-                (ngModelChange)= "model.pablishedDate = $event">
+                [ngModel]= "model.publishedDate | date: 'yyyy-MM-dd'"
+                (ngModelChange)= "model.publishedDate = $event">
             </div>
             <div class="mt-3">
                 <label for="author" class="form-label">Author</label>
