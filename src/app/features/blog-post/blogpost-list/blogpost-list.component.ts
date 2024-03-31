@@ -2,6 +2,8 @@ import { Observable } from 'rxjs';
 import { BlogPost } from './../models/blog-post.model';
 import { BlogPostService } from './../services/blog-post.service';
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-blogpost-list',
