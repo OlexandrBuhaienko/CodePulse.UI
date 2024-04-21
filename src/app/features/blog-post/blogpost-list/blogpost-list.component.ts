@@ -20,5 +20,4 @@ export class BlogpostListComponent implements OnInit{
     //get all blog posts from the API 
       this.blogPosts$ = this.blogPostService.getAllBlogPosts();
   }
-
 }
