@@ -1,30 +1,40 @@
+import { CategoryService } from './../../category/services/category.service';
 import { BlogPostService } from './../services/blog-post.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AddBlogPost } from '../models/add-blog-post.model';
-import { share } from 'rxjs';
+import { Observable, share } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
+import { Category } from '../../category/models/category.model';
 
 @Component({
   selector: 'app-add-blogpost',
   templateUrl: './add-blogpost.component.html',
   styleUrls: ['./add-blogpost.component.css'],
 })
-export class AddBlogpostComponent {
+export class AddBlogpostComponent implements OnInit{
   model: AddBlogPost;
-  constructor(private blogPostService: BlogPostService, private router: Router) {
+  categories$?: Observable<Category[]>;
+  constructor(private blogPostService: BlogPostService, private router: Router,
+    private categoryService: CategoryService) {
     this.model = {
       title: '',
       shortDescription: '',
       urlHandle: '',
       content: '',
       featuredImageUrl: '',
-      author: '',
       isVisible: true,
-      publishedDate: new Date()
+      author: '',
+      publishedDate: new Date(),
+      categories: []
     }
   }
+  ngOnInit(): void {
+    this.categories$ = this.categoryService.getAllCategories();
+    this.categories$.subscribe(categories => console.log(categories));
+  }
   onFormSubmit() : void{
+    console.log(this.model);
     this.blogPostService.createBlogPost(this.model)
     .subscribe({
       next: (response) => {
