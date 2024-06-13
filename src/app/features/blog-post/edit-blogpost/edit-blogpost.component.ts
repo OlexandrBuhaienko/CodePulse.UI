@@ -5,18 +5,22 @@ import { BlogPostService } from '../services/blog-post.service';
 import { BlogPost } from '../models/blog-post.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Category } from '../../category/models/category.model';
+import { Observable } from 'rxjs';
+
 
 
 @Component({
   selector: 'app-edit-blogpost',
-  standalone: true,
+  standalone: false,
   templateUrl: './edit-blogpost.component.html',
   styleUrl: './edit-blogpost.component.css'
 })
 export class EditBlogpostComponent implements OnInit, OnDestroy{
   id: string | null = null;
   routeSubscription?: Subscription;
-  model?: BlogPost;
+  model?: BlogPost | undefined;
+  categories$?: Observable<Category[]>;
   constructor(private route: ActivatedRoute, 
     private blogPostService: BlogPostService){
 
