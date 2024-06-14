@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Category } from '../../category/models/category.model';
 import { Observable } from 'rxjs';
+import { CategoryService } from '../../category/services/category.service';
 
 
 
@@ -21,11 +22,14 @@ export class EditBlogpostComponent implements OnInit, OnDestroy{
   routeSubscription?: Subscription;
   model?: BlogPost | undefined;
   categories$?: Observable<Category[]>;
+  selectedCategories?: string[];
   constructor(private route: ActivatedRoute, 
-    private blogPostService: BlogPostService){
+    private blogPostService: BlogPostService, 
+    private categoryService: CategoryService){
 
   }
   ngOnInit(): void {
+    this.categories$ = this.categoryService.getAllCategories();
     this.routeSubscription = this.route.paramMap.subscribe({
       next: (params) => {
         this.id = params.get('id');
@@ -34,6 +38,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy{
           this.blogPostService.getBlogPostById(this.id).subscribe({
             next: (response) => {
               this.model = response;
+              this.selectedCategories = response.categories.map(x => x.id);
             }
           });
         }
