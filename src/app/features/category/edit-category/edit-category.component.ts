@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Category } from '../models/category.model';
 import { UpdateCategoryRequest } from '../models/update-category-request.model';
+import { ImageSelectorComponent } from 'src/app/shared/components/image-selector/image-selector.component';
 
 @Component({
   selector: 'app-edit-category',
