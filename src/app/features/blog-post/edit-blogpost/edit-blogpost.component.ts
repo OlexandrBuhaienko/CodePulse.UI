@@ -20,17 +20,16 @@ import { visitAll } from '@angular/compiler';
   styleUrl: './edit-blogpost.component.css'
 })
 export class EditBlogpostComponent implements OnInit, OnDestroy{
-  id: string | null = null;
-
   routeSubscription?: Subscription;
   updateBlogPostSubscription?: Subscription;
   getBlogPostSubscription?: Subscription;
   deleteBlogPostSubscrption?: Subscription;
 
-
+  id: string | null = null;
   model?: BlogPost | undefined;
   categories$?: Observable<Category[]>;
   selectedCategories?: string[];
+  isImageSelectorVisible: boolean = false;
   constructor(private route: ActivatedRoute, 
     private blogPostService: BlogPostService, 
     private categoryService: CategoryService,
@@ -89,6 +88,12 @@ export class EditBlogpostComponent implements OnInit, OnDestroy{
       }
       );
     }
+  }
+  openImageSelector(): void{
+    this.isImageSelectorVisible = true;
+  }
+  closeImageSelector(): void{
+    this.isImageSelectorVisible = false;
   }
   ngOnDestroy(): void {
     this.routeSubscription?.unsubscribe();
