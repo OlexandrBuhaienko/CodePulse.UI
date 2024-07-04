@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { MarkdownModule } from 'ngx-markdown';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,7 @@ import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpo
 import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blogpost.component';
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
 import { ImageSelectorComponent } from './shared/components/image-selector/image-selector.component';
+import { SharedModule } from './shared/modules/shared.module';
 
 
 @NgModule({
@@ -29,11 +30,13 @@ import { ImageSelectorComponent } from './shared/components/image-selector/image
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
     FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule, 
     HttpClientModule,
     MarkdownModule.forRoot(),
     ImageSelectorComponent,
+    SharedModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]
