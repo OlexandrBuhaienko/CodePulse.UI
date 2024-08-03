@@ -4,7 +4,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AddBlogPost } from '../models/add-blog-post.model';
 import { Observable, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment.development';
 import { Category } from '../../category/models/category.model';
 import { ImageService } from 'src/app/shared/services/image.service';
 
